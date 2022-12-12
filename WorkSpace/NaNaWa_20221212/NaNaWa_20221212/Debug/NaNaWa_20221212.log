@@ -1,0 +1,3 @@
+﻿  main.cpp
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221212\NaNaWa_20221212\main.cpp(6,12): warning C4101: 'val2' :참조되지 않은 지역 변수입니다.
+  NaNaWa_20221212.vcxproj -> D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221212\Debug\NaNaWa_20221212.exe
