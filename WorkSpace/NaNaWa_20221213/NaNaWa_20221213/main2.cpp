@@ -38,7 +38,7 @@ int main()
 
 	int iNumber = 0;
 
-
+	float fNumber = 3.0f;
 	//std::cout << NaNaWa << std::endl;
 	//std::cout << James << std::endl;
 	
