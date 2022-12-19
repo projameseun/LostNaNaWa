@@ -1,2 +1,4 @@
-﻿  연습.cpp
+﻿  main.cpp
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(32,10): warning C4305: '=': 'int'에서 'char'(으)로 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(32,7): warning C4309: '=': 상수 값이 잘립니다.
   NaNaWa_20221219_2.vcxproj -> D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\Debug\NaNaWa_20221219_2.exe
