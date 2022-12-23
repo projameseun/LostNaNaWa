@@ -1,5 +1,10 @@
 ﻿  main.cpp
-D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(31,17): warning C4305: '초기화 중': 'int'에서 'char'(으)로 잘립니다.
-D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(31,13): warning C4309: '초기화 중': 상수 값이 잘립니다.
-D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(35,7): warning C4309: '=': 상수 값이 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(32,17): warning C4305: '초기화 중': 'int'에서 'char'(으)로 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(32,13): warning C4309: '초기화 중': 상수 값이 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(36,7): warning C4309: '=': 상수 값이 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(83,19): warning C4309: '초기화 중': 상수 값이 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(99,12): warning C4309: '초기화 중': 상수 값이 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(128,17): warning C4305: '초기화 중': 'int'에서 'bool'(으)로 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(134,16): warning C4309: '초기화 중': 상수 값이 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\NaNaWa_20221219_2\main.cpp(148,12): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   NaNaWa_20221219_2.vcxproj -> D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20221219\NaNaWa_20221219_2\Debug\NaNaWa_20221219_2.exe
