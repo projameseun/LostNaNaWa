@@ -32,7 +32,7 @@ int main()
 	//7.4Byte 실수를 하나 받아서 3.14를 출력해보세요
 
 	float fnum;
-	fnum = 3.14;
+	fnum = 3.14f;
 	std::cout << fnum << std::endl;
 
 
