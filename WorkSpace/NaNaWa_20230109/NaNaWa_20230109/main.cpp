@@ -89,8 +89,21 @@ int main()
 		}
 	}
 
-	//구구단 2 ~ 9단 까지 출력해보자.
+	system("cls");
 
+	//구구단 2 ~ 9단 까지 출력해보자.
+	for (int i = 2; i < 10; ++i)
+	{
+		for (int j = 1; j < 10; ++j)
+		{
+			if (j == 1)
+			std::cout << i << "단: ";
+			
+			std::cout << i << "*" << j << "=" << i * j << "\t";
+		}
+
+		std::cout << std::endl;
+	}
 	
 
 
