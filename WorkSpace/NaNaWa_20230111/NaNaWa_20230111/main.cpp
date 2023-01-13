@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <Windows.h>
+#include <conio.h>
 
 typedef int MyInt;
 typedef long Mylong;
@@ -28,6 +29,24 @@ void gotoxy(int _x, int _y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),_pos);
 }
 
+enum class Key
+{
+	UP = 72,
+	DOWN= 80,
+	LEFT= 75,
+	RIGHT= 77,
+	ENTER = 13,
+	ESC =27,
+};
+
+enum class KeyWASD
+{
+	W = 0x57,
+	S = 0x53,
+	A = 0x41,
+	D = 0x44,
+
+};
 
 
 int main()
@@ -129,7 +148,105 @@ int main()
 	std::cout << "색깔 확인해 볼까요?" << std::endl;
 
 	//키보드를 움직이다.
+	system("cls");
 
+	//while(true)
+	//{
+	//	//_kbhit()함수는 키가 눌렀는지 체크를 해준다 만약에 키를 눌르지 않으면 0이 들어가게 되고 
+	//	//키를 만약에 누르게 되면 0이외의 값을 리턴하게 된다.
+	//	if (_kbhit())	//#include <conio.h>
+	//	{
+
+	//		char c = _getch();	//키보드로 하나의 키를 입력받는 함수이다. 아스키코드값을 반환한다.
+	//		
+	//		switch (c)
+	//		{
+	//		case(int)Key::UP:
+	//			std::cout << "UP를 입력하였습니다" << std::endl;
+	//			break;
+	//		case(int)Key::DOWN:
+	//			std::cout << "DOWN를 입력하였습니다" << std::endl;
+	//			break;
+	//		case(int)Key::RIGHT:
+	//			std::cout << "RIGHT를 입력하였습니다" << std::endl;
+	//			break;
+	//		case(int)Key::LEFT:
+	//			std::cout << "LEFT를 입력하였습니다" << std::endl;
+	//			break;
+	//		case(int)Key::ENTER:
+	//			std::cout << "ENTER를 입력하였습니다" << std::endl;
+	//			break;
+	//		case(int)Key::ESC:
+	//			std::cout << "ESC를 입력하였습니다" << std::endl;
+	//			break;
+	//		}
+	//		
+	//		
+	//	}
+
+	//	
+	//}
+
+	int x = 1;
+	int y = 1;
+
+	gotoxy(x, y);
+
+	//Async:비동기
+	//다중키가 사용가능한 GetAsyncKeyState 
+	while (true)
+	{
+		/*if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+		{
+			x--;
+		}
+		else if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+		{
+			x++;
+		}
+		else if (GetAsyncKeyState(VK_UP) & 0x8000)
+		{
+			y--;
+		}
+		else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+		{
+			y++;
+		}*/
+
+		if (GetAsyncKeyState((int)KeyWASD::A) & 0x8000)
+		{
+			x--;
+		}
+		else if (GetAsyncKeyState((int)KeyWASD::D) & 0x8000)
+		{
+			x++;
+		}
+		else if (GetAsyncKeyState((int)KeyWASD::W) & 0x8000)
+		{
+			y--;
+		}
+		else if (GetAsyncKeyState((int)KeyWASD::S) & 0x8000)
+		{
+			y++;
+		}
+
+		system("cls");
+		gotoxy(x, y);
+		std::cout << "♣";
+	}
+
+
+
+
+
+
+
+
+
+
+	
+
+	
 
 	return 0;
 }
