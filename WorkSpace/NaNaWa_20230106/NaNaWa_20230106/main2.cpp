@@ -38,44 +38,44 @@ int main()
 
 	//time함수 
 	//UCT(1972년 1월 1일 0분 0초부터 시행된 국제 표준시) 이시간을 정수값으로 반환해주는 함수가 time함수이다.
-	//
-	//std::cout << time(0) << std::endl;
-	std::cout << "1.rand :" << rand() << std::endl;
-	std::cout << "2.rand :" << rand() << std::endl;
-	std::cout << "3.rand :" << rand() << std::endl;
-	std::cout << "4.rand :" << rand() << std::endl;
-	std::cout << "5.rand :" << rand() << std::endl;
+	////
+	////std::cout << time(0) << std::endl;
+	//std::cout << "1.rand :" << rand() << std::endl;
+	//std::cout << "2.rand :" << rand() << std::endl;
+	//std::cout << "3.rand :" << rand() << std::endl;
+	//std::cout << "4.rand :" << rand() << std::endl;
+	//std::cout << "5.rand :" << rand() << std::endl;
 
 	//우리가 정해진 범위의 숫자안에서 랜덤을 가져오게 하고싶다.
 	//이때 사용하는게 나머지 연산자다.
 	//어떤 큰숫자가 와도 나머지 연산자를 사용하면 내가 원하는 범위에 값을 나타낼수 있다.
 
 
-	//0~2까지만 무조건나온다
-	int iRand = rand() % 3;
-	std::cout << iRand << std::endl;
+	////0~2까지만 무조건나온다
+	///*int iRand = rand() % 3;*/
+	//std::cout << iRand << std::endl;
 
-	//0~99까지만 나오게한다
-	iRand = rand() % 100;
+	////0~99까지만 나오게한다
+	//iRand = rand() % 100;
 
-	//1~100까지만 나오게한다
-	iRand = rand() % 100 + 1;		//0 ~99 나오게된다 
+	////1~100까지만 나오게한다
+	//iRand = rand() % 100 + 1;		//0 ~99 나오게된다 
 
-	//100 ~ 199 까지만 나오게한다
+	////100 ~ 199 까지만 나오게한다
 
-	iRand = rand() % 100 + 100;	
+	//iRand = rand() % 100 + 100;	
 
-	float fRand = rand() % 10000 / 100.f;	//소수점 둘째자리의 숫자를 사용할수도 있다.
-	std::cout << "Rand :" << fRand << std::endl;
+	//float fRand = rand() % 10000 / 100.f;	//소수점 둘째자리의 숫자를 사용할수도 있다.
+	//std::cout << "Rand :" << fRand << std::endl;
 
 	//최소 공격력 최대 공격력
 	//500~1000
-	int iMin = 500;
-	int iMax = 1000;
+	//int iMin = 500;
+	//int iMax = 1000;
 
 	//0 ~500값이 나오게 해야된다. 
 
-	if (fRand < 1.f)
+	/*if (fRand < 1.f)
 	{
 		std::cout << "에스더 획득 " << std::endl;
 	}
@@ -94,9 +94,15 @@ int main()
 	else
 	{
 		std::cout << "아이템 없음 " << std::endl;
-	}
+	}*/
 
 	
+	int iMax = 500;
+	int iMin = 1000;
+
+	int iRand = rand() % (1000 - 500 + 1) + 500;
+
+		std::cout << iRand << std::endl;
 
 	return 0;
 }
