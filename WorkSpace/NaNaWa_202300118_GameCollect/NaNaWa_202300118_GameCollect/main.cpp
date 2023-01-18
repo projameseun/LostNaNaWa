@@ -37,9 +37,9 @@ void OddEvenGame()
 	std::string strCom;
 	int iCount = 0;
 	int iExitCount = 0;
-	iStart = 2;
 
-	while (iStart == 2)
+
+	while (true)
 	{
 		system("cls");
 		ResetPos();
@@ -59,9 +59,14 @@ void OddEvenGame()
 		gotoxy(ixpos, iypos);
 		std::cout << "홀 , 짝을 입력해주세요 :";
 
-		if (iExitCount == 4)
+		if (iExitCount == 5)
 		{
-			iStart = 1;
+			iypos++;
+			gotoxy(ixpos, iypos);
+			std::cin.ignore();
+			std::cout << "게임이 끝났습니다 Enter를 눌러주세요";
+			getchar();
+			break;
 		}
 
 		std::cin >> strPlayer;
