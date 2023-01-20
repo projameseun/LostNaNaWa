@@ -29,6 +29,20 @@ enum class Key
 	ESC = 27,
 };
 
+enum class Drink
+{
+	iCoffee =1,
+	iCoke ,
+	iWater,
+	iMonster,
+	iMilk ,
+};
+
+void ColorInitial()
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN);
+}
+
 void OddEvenGame()
 {
 	//게임 화면들어가기
@@ -81,6 +95,7 @@ void OddEvenGame()
 			std::cin.ignore();
 			std::cout << "홀 짝을 제대로 입력해주세요";
 			getchar();
+			continue;
 
 		}
 
@@ -104,6 +119,84 @@ void OddEvenGame()
 }
 
 
+void DrinkGame()
+{
+	int iTotal = 0;
+	int iMoney = 10000;		//사용자가 갖고있는 돈
+	//음료수종류
+	int iCoffee = 0;
+	int iCoke = 0;
+	int iWater = 0;
+	int iMonster = 0;
+	int iMilk = 0;
+	//음료수 선택변수
+	int iSelect = 0;
+
+	//0.나가기메뉴
+	//1.음료수선택한다
+	//2. 1,구매 , 2 나가기	예외처리(금액이 부족하면 구매할수 없습니다)
+	//3. 구매중입니다 문구 띄우기 
+	//4. 중복구매(욕심나면)	커피,물등 여러개를 선택해서 한번에 구매할수잇는 기능
+
+	while (true)
+	{
+		system("cls");
+		ResetPos();
+		gotoxy(ixpos, iypos);
+
+		ixpos = 100;
+		gotoxy(ixpos, iypos);
+		std::cout << "Money :" << iMoney;
+		
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
+		std::cout << "\\";
+		ColorInitial();
+
+		ResetPos();
+		gotoxy(ixpos, iypos);
+		
+		std::cout << "구매 하실 음료수를 선택해주세요 : ";
+		//나가기메뉴
+
+		//음료수종류
+
+		std::cin >> iSelect;
+
+		//if() //예외처리
+
+		if (iSelect == (int)Drink::iCoffee)
+		{
+
+		}
+		else if (iSelect == (int)Drink::iCoke)
+		{
+
+		}
+		else if (iSelect == (int)Drink::iWater)
+		{
+
+		}
+		else if (iSelect == (int)Drink::iMonster)
+		{
+
+		}
+		else if (iSelect == (int)Drink::iMilk)
+		{
+
+		}
+		else   //예외처리
+		{
+		}
+		
+		
+		
+
+	}//while (true)
+	
+
+	
+}
+
 
 int main()
 {
@@ -115,13 +208,13 @@ int main()
 		system("cls");
 		ResetPos();
 		gotoxy(ixpos, iypos);
-		std::cout << "<==================>";
+		std::cout << "<========================>";
 		iypos++;
 		gotoxy(ixpos, iypos);
-		std::cout << "=====홀짝 게임=======";
+		std::cout << "=====음료수 키오스크======";//std::cout << "=====홀짝 게임=======";
 		iypos++;
 		gotoxy(ixpos, iypos);
-		std::cout << "<==================>";
+		std::cout << "<=======================>";
 		iypos++;
 		gotoxy(ixpos, iypos);
 		std::cout << "시작 : ENTER";
@@ -139,7 +232,8 @@ int main()
 			{
 			case (int)Key::ENTER:
 			{
-				OddEvenGame();
+				//OddEvenGame();
+				DrinkGame();
 				break;
 			}
 			case(int)Key::ESC:
