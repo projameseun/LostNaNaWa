@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <time.h>
 #include <string.h>
+#include "cful.h"
 
 
 int ixpos = 0;

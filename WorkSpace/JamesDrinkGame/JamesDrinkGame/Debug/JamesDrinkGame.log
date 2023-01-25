@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\JamesDrinkGame\JamesDrinkGame\main.cpp(12,16): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\JamesDrinkGame\JamesDrinkGame\main.cpp(12,19): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  JamesDrinkGame.vcxproj -> C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\JamesDrinkGame\Debug\JamesDrinkGame.exe

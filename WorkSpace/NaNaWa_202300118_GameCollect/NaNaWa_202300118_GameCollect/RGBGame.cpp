@@ -1,6 +1,15 @@
 #include <iostream>
 #include <stdio.h>
+#include "cful.h"
 
+
+#define ANSI_COLOR_RED      "\x1b[31m"
+#define ANSI_COLOR_GREEN    "\x1b[32m"
+#define ANSI_COLOR_YELLOW   "\x1b[33m"
+#define ANSI_COLOR_BLUE     "\x1b[34m"
+#define ANSI_COLOR_MAGENTA  "\x1b[35m"
+#define ANSI_COLOR_CYAN     "\x1b[36m"
+#define ANSI_COLOR_RESET    "\x1b[0m"
 
 
 int main()
@@ -36,7 +45,11 @@ int main()
 
 	std::cout << "Alpha :" << (iColor >> 24 & 0x000000ff) << std::endl;
 
-	std::cout << (FG_COLO)
+	
+
+	
+	printf(FG_COLOR(133, 203, 255) "Hello World!\n" RESET);
+	printf(BG_COLOR(69, 46, 107) "Hello World!\n" RESET);
 
 
 
