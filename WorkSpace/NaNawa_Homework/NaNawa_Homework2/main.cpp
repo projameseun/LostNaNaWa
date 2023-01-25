@@ -62,7 +62,7 @@ void DrinkSelect()
 	Resetpos();
 	gotoxy(ixpos, iypos);
 	std::cout << "1. 구매";
-	
+
 	iypos++;
 	gotoxy(ixpos, iypos);
 	std::cout << "2. 나가기";
@@ -84,47 +84,47 @@ void DONOTBUY()
 }
 
 void DrinkBuy()
-{	
-	
+{
+
 
 	Resetpos();
 	gotoxy(ixpos, iypos);
 	int i;
 
-	for ( i = 0; i < 5; ++i)
+	for (i = 0; i < 5; ++i)
 	{
-		
+
 		srand(static_cast<unsigned int>(time(NULL)));
 		if (i == 0)
 		{
 			system("cls");
 			Resetpos();
-			gotoxy(ixpos,iypos);
+			gotoxy(ixpos, iypos);
 			std::cout << "구매중입니다.";
 		}
 		else if (i == 1)
-		{	
+		{
 			system("cls");
 			Resetpos();
 			gotoxy(ixpos, iypos);
 			std::cout << "구매중입니다..";
 		}
 		else if (i == 2)
-		{	
+		{
 			system("cls");
 			Resetpos();
 			gotoxy(ixpos, iypos);
 			std::cout << "구매중입니다...";
 		}
 		else if (i == 3)
-		{	
+		{
 			system("cls");
 			Resetpos();
 			gotoxy(ixpos, iypos);
 			std::cout << "구매중입니다....";
 		}
 		else if (i == 4)
-		{	
+		{
 			system("cls");
 			Resetpos();
 			gotoxy(ixpos, iypos);
@@ -134,7 +134,7 @@ void DrinkBuy()
 	} //if
 
 
-	
+
 }
 
 
@@ -173,8 +173,8 @@ void Drinkgame()
 		ColorInitial();
 
 		Resetpos();
-			
-		
+
+
 		iypos++;
 		iypos++;
 
@@ -206,7 +206,7 @@ void Drinkgame()
 
 		gotoxy(ixpos, iypos);
 		std::cout << "구매하실 음료수를 선택해주세요 : ";
-		
+
 		iypos++;
 		gotoxy(50, iypos);
 		std::cin >> iSelect;
@@ -221,11 +221,11 @@ void Drinkgame()
 				std::cin >> iSelect;
 				int iCoffee = 1200;
 
-			
+
 				if (iSelect == (int)BUY::iBuy)
-				{	
+				{
 					if (iMoney < iCoffee)
-					{	
+					{
 						DONOTBUY();
 
 						break;
@@ -241,10 +241,10 @@ void Drinkgame()
 				{
 					break;
 				}
-					
-				
-				
-		
+
+
+
+
 			}
 
 		}
@@ -386,7 +386,7 @@ void Drinkgame()
 					system("cls");
 					DrinkBuy(); //구매중입니다.....
 					break;
-					
+
 				}
 
 				else if (iSelect == (int)BUY::iESC)
@@ -394,7 +394,7 @@ void Drinkgame()
 					break;
 				}
 
-				
+
 
 
 			}
@@ -403,7 +403,7 @@ void Drinkgame()
 
 		else if (iSelect == (int)Drink::iESC)
 		{
-		break;
+			break;
 		}
 	}//while-Drinkgame
 
@@ -430,8 +430,8 @@ int main()
 		Resetpos();
 		gotoxy(ixpos, iypos);
 		std::cout << "■■■■■■■■■";
-		
-		
+
+
 		iypos++;
 		gotoxy(ixpos, iypos);
 		std::cout << "■              ■";
@@ -476,30 +476,30 @@ int main()
 		iypos++;
 		gotoxy(ixpos, iypos);
 		std::cout << "종료 : ESC";
-		
+
 		iypos++;
 		gotoxy(ixpos, iypos);
 
-	
+
 		if (_kbhit())
-		{	
-			
+		{
+
 			char c = _getch();
 
 			switch (c)
 			{
-				case(int)Key::ENTER:
-				{
-					Drinkgame();
-					break;
-				}
-				case(int)Key::ESC:
-				{
-					iStart = 0;
-					std::cout << "ENTER를 누르면 게임을 종료합니다";
-					getchar();
-					break;
-				}
+			case(int)Key::ENTER:
+			{
+				Drinkgame();
+				break;
+			}
+			case(int)Key::ESC:
+			{
+				iStart = 0;
+				std::cout << "ENTER를 누르면 게임을 종료합니다";
+				getchar();
+				break;
+			}
 			default:
 				break;
 			}
@@ -509,7 +509,7 @@ int main()
 
 	}//while
 
-	
+
 
 
 	return 0;
