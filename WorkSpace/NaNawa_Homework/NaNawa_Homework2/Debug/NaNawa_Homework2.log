@@ -1,4 +1,4 @@
 ﻿  main.cpp
-C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\NaNawa_Homework2\NaNawa_Homework2\main.cpp(17,16): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\NaNawa_Homework2\NaNawa_Homework2\main.cpp(17,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-  NaNawa_Homework2.vcxproj -> C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\NaNawa_Homework2\Debug\NaNawa_Homework2.exe
+C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\NaNawa_Homework\NaNawa_Homework2\main.cpp(17,16): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\NaNawa_Homework\NaNawa_Homework2\main.cpp(17,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  NaNawa_Homework2.vcxproj -> C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\NaNawa_Homework\Debug\NaNawa_Homework2.exe

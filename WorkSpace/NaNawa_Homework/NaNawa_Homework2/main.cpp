@@ -94,7 +94,7 @@ void DrinkBuy()
 	for (i = 0; i < 5; ++i)
 	{
 
-		srand(static_cast<unsigned int>(time(NULL)));
+		//srand(static_cast<unsigned int>(time(NULL)));
 		if (i == 0)
 		{
 			system("cls");
@@ -413,13 +413,10 @@ void Drinkgame()
 
 
 
-
-
-
 int main()
 {
 
-	srand(static_cast<unsigned int>(time(NULL)));
+	//srand(static_cast<unsigned int>(time(NULL)));
 
 
 	while (iStart == 1)
