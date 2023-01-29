@@ -20,20 +20,21 @@ DWORD Result; //결과값
 
 std::string MusicName[10];
 
+LPCTSTR MusicRoute[10];
+
+bool bTrue = true;
+
+int iMusicStart = 0;
+
 void MusicPlayMenuPrint()
 {
 	std::cout << "Music 재생 프로그램 입니다" << std::endl;
 	std::cout << "원하는 노래를 선택 해주시면 됩니다" << std::endl;
-	std::cout << "1.SevenTeen - Troye Sivan" << std::endl;
-	std::cout << "2.Memories - Maroon5" << std::endl;
-	std::cout << "3.지상에영원으로 - 유다은" << std::endl;
-	std::cout << "4.2002 - Anne Marie" << std::endl;
-	std::cout << "5.잠이오질 않네요 - 장범준" << std::endl;
-	std::cout << "6.고백연습 - 경서에게" << std::endl;
-	std::cout << "7.TiemBomb - AllTimeLow" << std::endl;
-	std::cout << "8.Onepiece - Onepiece" << std::endl;
-	std::cout << "9.Psycho - PostMalone" << std::endl;
-	std::cout << "10.너의모든순간 - 성시경" << std::endl;
+	for (int i = 0; i < 10; ++i)
+	{
+		std::cout << i + 1 << "." << MusicName[i] << std::endl;
+	}
+	
 }
 
 
@@ -80,56 +81,22 @@ WORD InitWAV(LPCTSTR lpszWave)
 	return 0;
 }
 
+void Pause(int Player_Num)
+{
+	mciSendCommand(Player_Num, MCI_PAUSE, MCI_SEEK_TO_START, (DWORD)(LPVOID)NULL);
+}
+
 void ResetWav(int Player_Num)
 {
 	mciSendCommand(Player_Num, MCI_SEEK, MCI_SEEK_TO_START, (DWORD)(LPVOID)NULL);
 
 }
 
-void UpdateWav(int Play_Num)
+void PlayWav(int Play_Num)
 {
 	int playNum = Play_Num;
 	mciSendCommand(Play_Num, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&mciPlay);
-	//맨앞숫자는 재생번호 
-	//a_Word = mciSendCommand(1, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&mciPlay);
-
-	//mciSendCommand(Play_Num,MCI_RESUME,0,NULL);
-	while (true)
-	{
-		system("cls");
-		MusicPlayMenuPrint();
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN);
-		std::cout << MusicName[Play_Num - 1] << "  실행중입니다" << std::endl;
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN);
-		std::cout << "다른 노래를 재생하실려면 번호를 입력해주세요" << std::endl;
-		std::cout << "프로그램을 종료하실려면 -99를 입력해주세요 " << std::endl;
-
-		int iSelect = 0;
-		std::cin >> iSelect;
-		
-		if (iSelect == 99)
-		{
-			break;
-		}
-
-		if (iSelect < 1 || iSelect > 10)
-		{
-			std::cout << "번호를 제대로 선택해주세요 " << std::endl;
-			Sleep(500);
-			continue;
-		}
-
-
-		ResetWav(playNum);
-		UpdateWav(iSelect);
-		
-
-		
-		
-	}
 }
-
-
 
 void DestroyWav()
 {
@@ -144,20 +111,149 @@ void DestroyWav()
 	}
 }
 
-void Initial()
+void UpdateWav(int Play_Num)
 {
-	InitWAV(L".\\Music\\seventeen.mp3");
-	InitWAV(L".\\Music\\Memories.mp3");
-	InitWAV(L".\\Music\\jisang.mp3");
-	InitWAV(L".\\Music\\2002.mp3");
-	InitWAV(L".\\Music\\jangbumzun.mp3");
-	InitWAV(L".\\Music\\gyungseo.mp3");
-	InitWAV(L".\\Music\\timebomb.mp3");
-	InitWAV(L".\\Music\\onepiece.mp3");
-	InitWAV(L".\\Music\\postmalone.mp3");
-	InitWAV(L".\\Music\\sungsikyung.mp3");
+	int playNum = Play_Num;
+	mciSendCommand(Play_Num, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&mciPlay);
+	//맨앞숫자는 재생번호 
+	//a_Word = mciSendCommand(1, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&mciPlay);
+
+	//mciSendCommand(Play_Num,MCI_RESUME,0,NULL);
+	while (iMusicStart == 0)
+	{
+		system("cls");
+		MusicPlayMenuPrint();
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN);
+		std::cout << MusicName[Play_Num - 1] << "  실행중입니다" << std::endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN);
+		std::cout << "다른 노래를 재생하실려면 번호를 입력해주세요" << std::endl;
+		std::cout << "프로그램을 종료하실려면 -99를 입력해주세요 " << std::endl; 
+		std::cout << "일시정지하고 다시 킬려면 11을 입력해주세요 " << std::endl;
+
+		int iSelect = 0;
+		std::cin >> iSelect;
+		
+		if (iSelect == 99)
+		{
+			DestroyWav();
+			iMusicStart = 1;
+		}
+
+		if (iSelect == 11)
+		{
+			bTrue = !bTrue;
+			if (bTrue == false)
+			{
+
+				Pause(playNum);
+			}
+			else
+			{
+				PlayWav(playNum);
+			}
+
+			continue;
+		}
+
+
+		if (iSelect < 1 || iSelect > 11)
+		{
+			std::cout << "번호를 제대로 선택해주세요 " << std::endl;
+			Sleep(500);
+			continue;
+		}
+
+		
+
+		//continue;
+		ResetWav(playNum);
+		UpdateWav(iSelect);
+		
+
+		
+		
+	}
 }
 
+
+
+
+
+void Initial()
+{
+	for (int i = 0; i < 10; ++i)
+	{
+		if (MusicName[i] == "TroyeSIvan")
+		{
+			MusicRoute[i] = L".\\Music\\seventeen.mp3";
+		}
+		else if (MusicName[i] == "Maroon5")
+		{
+			MusicRoute[i] = L".\\Music\\Memories.mp3";
+		}
+		else if (MusicName[i] == "YouDaEn")
+		{
+			MusicRoute[i] = L".\\Music\\jisang.mp3";
+		}
+		else if (MusicName[i] == "JangBeomJun")
+		{
+			MusicRoute[i] = L".\\Music\\jangbumzun.mp3";
+		}
+		else if (MusicName[i] == "GyungSeo")
+		{
+			MusicRoute[i] = L".\\Music\\gyungseo.mp3";
+		}
+		else if (MusicName[i] == "AllTimeLow")
+		{
+			MusicRoute[i] = L".\\Music\\timebomb.mp3";
+		}
+		else if (MusicName[i] == "OnePiece")
+		{
+			MusicRoute[i] = L".\\Music\\onepiece.mp3";
+		}
+		else if (MusicName[i] == "PostMalone")
+		{
+			MusicRoute[i] = L".\\Music\\postmalone.mp3";
+
+		}
+		else if (MusicName[i] == "SungSiKyung")
+		{
+			MusicRoute[i] = L".\\Music\\sungsikyung.mp3";
+		}
+		else if (MusicName[i] == "AnneMarie")
+		{
+			MusicRoute[i] = L".\\Music\\2002.mp3";
+		}
+	}
+
+
+
+	
+
+	for (int i = 0; i < 10; ++i)
+	{
+		InitWAV(MusicRoute[i]);
+	}
+}
+
+void ShffuleMusic()
+{
+
+	int idx1, idx2 = 0;
+	std::string sTemp = "";
+
+	
+
+	for (int i = 0; i < 100; ++i)
+	{
+		idx1 = rand() % 10;
+		idx2 = rand() % 10;
+
+		sTemp = MusicName[idx1];
+		MusicName[idx1] = MusicName[idx2];
+		MusicName[idx2] = sTemp;
+	}
+}
 
 
 
@@ -168,13 +264,12 @@ int main()
 	//2.해당되는 번호를 눌러주면 그노래 재생 
 	//3.랜덤재생 가능 
 	//4.랜덤이 될때 중복이 되면 안된다.
-	//5.랜덤을 끄게되면 다시 원상복귀 시킨다 
+	//5.2가지 모드를 지원한다 1.일반재생 2.랜덤재생
+	
 	
 	//InitWAV(L".\\Music\\GameStart.wav");
+	srand(static_cast<unsigned int>(time(NULL)));
 
-
-
-	
 
 	for (int i = 0; i < 10; ++i)
 	{
@@ -190,32 +285,93 @@ int main()
 		else if (i == 9) MusicName[i] = "SungSiKyung";
 	}
 
-	Initial();
-	
+
+
 	while (true)
 	{
 		system("cls");
-		MusicPlayMenuPrint();
 		
+
+		std::cout << "1.일반재생" << std::endl;
+		std::cout << "2.랜덤재생" << std::endl;
+		std::cout << "3.나가기" << std::endl;
+
 		int iSelect = 0;
 		std::cin >> iSelect;
 
-		if (iSelect < 1 || iSelect > 10)
+		if (iSelect == 1)
 		{
-			std::cout << "번호를 제대로 선택해주세요 " << std::endl;
-			Sleep(500);
+			
+			Initial();
 
-			continue;
+			iMusicStart = 0;
+
+			while (true)
+			{
+				system("cls");
+				MusicPlayMenuPrint();
+
+				iSelect = 0;
+				std::cin >> iSelect;
+
+				if (iSelect < 1 || iSelect > 10)
+				{
+					std::cout << "번호를 제대로 선택해주세요 " << std::endl;
+					Sleep(500);
+
+					continue;
+				}
+
+
+				UpdateWav(iSelect);
+
+
+
+
+				break;
+			}
+		}
+		else if (iSelect == 2)
+		{
+		
+			ShffuleMusic();
+			Initial();
+		
+
+
+			iMusicStart = 0;
+			while (true)
+			{
+				system("cls");
+				MusicPlayMenuPrint();
+
+				iSelect = 0;
+				std::cin >> iSelect;
+
+				if (iSelect < 1 || iSelect > 10)
+				{
+					std::cout << "번호를 제대로 선택해주세요 " << std::endl;
+					Sleep(500);
+
+					continue;
+				}
+
+
+				UpdateWav(iSelect);
+
+
+
+
+				break;
+			}
+		}
+		else if (iSelect == 3)
+		{
+			break;
 		}
 
-
-		UpdateWav(iSelect);
-	
-
-		
-	
-		break;
 	}
+	
 
 
 	DestroyWav();
