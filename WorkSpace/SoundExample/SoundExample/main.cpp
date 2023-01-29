@@ -113,6 +113,8 @@ void DestroyWav()
 
 void UpdateWav(int Play_Num)
 {
+	//MCI_NOTIFY 노래가 하나끝나면 노래끝
+	// MCI_SEEK_TO_START 음원재생을 처음위치
 	int playNum = Play_Num;
 	mciSendCommand(Play_Num, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&mciPlay);
 	//맨앞숫자는 재생번호 
@@ -121,6 +123,7 @@ void UpdateWav(int Play_Num)
 	//mciSendCommand(Play_Num,MCI_RESUME,0,NULL);
 	while (iMusicStart == 0)
 	{
+
 		system("cls");
 		MusicPlayMenuPrint();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN);
@@ -174,9 +177,6 @@ void UpdateWav(int Play_Num)
 		
 	}
 }
-
-
-
 
 
 void Initial()
@@ -265,6 +265,9 @@ int main()
 	//3.랜덤재생 가능 
 	//4.랜덤이 될때 중복이 되면 안된다.
 	//5.2가지 모드를 지원한다 1.일반재생 2.랜덤재생
+	//6.노래가 끝났을때 다음노래재생 
+	//7.만약에 노래가 끝난걸 알기위해서 그노래의 재생시간을 알아야된다. 
+	//8.TeltaTime을 갖고와서 0초가 됬을때(노래가끝났을때)다음노래 재생
 	
 	
 	//InitWAV(L".\\Music\\GameStart.wav");
@@ -322,10 +325,7 @@ int main()
 					continue;
 				}
 
-
 				UpdateWav(iSelect);
-
-
 
 
 				break;
