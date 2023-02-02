@@ -1,9 +1,2 @@
-﻿  RGBGame.cpp
-  cful.cpp
-  main.cpp
-C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\NaNaWa_202300118_GameCollect\NaNaWa_202300118_GameCollect\main.cpp(16,16): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\NaNaWa_202300118_GameCollect\NaNaWa_202300118_GameCollect\main.cpp(16,19): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-  코드를 생성하고 있습니다...
-RGBGame.obj : error LNK2005: _main이(가) main.obj에 이미 정의되어 있습니다.
-RGBGame.obj : error LNK2005: "int _global_cful_var_use_ansi" (?_global_cful_var_use_ansi@@3HA)이(가) main.obj에 이미 정의되어 있습니다.
-C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\NaNaWa_202300118_GameCollect\Debug\NaNaWa_202300118_GameCollect.exe : fatal error LNK1169: 여러 번 정의된 기호가 있습니다.
+﻿  TaxiGame.cpp
+  NaNaWa_202300118_GameCollect.vcxproj -> D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_202300118_GameCollect\Debug\NaNaWa_202300118_GameCollect.exe

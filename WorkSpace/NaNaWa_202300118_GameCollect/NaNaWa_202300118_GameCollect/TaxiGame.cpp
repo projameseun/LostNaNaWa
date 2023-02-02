@@ -26,38 +26,75 @@ int iDesty = 0;
 
 void DongPos()
 {
-	ixPos += iSpeed;
-	if (ixPos >= iDestx)
+	if (ixPos > iDestx)	//목적지가 왼쪽에 있다는 거다
 	{
-		ixPos = iDestx;
+		ixPos += iSpeed;
 	}
+	else if (ixPos < iDestx)	//목적지가 오른쪽에 있다는 거다
+	{
+		ixPos += iSpeed;
+		if (ixPos >= iDestx)
+		{
+			ixPos = iDestx;
+		}
+	}
+
+	
+
 }
 
 void SeoPos()
 {
-	ixPos -= iSpeed;
-	if (ixPos <= iDestx)	//ixpos = -2  <= iDestx = 5
+	if (ixPos < iDestx)	//목적지가 오른쪾에 있다는거다
 	{
-		ixPos = iDestx;
+		ixPos -= iSpeed;
 	}
+	else if (ixPos > iDestx) //목적지가 왼쪾에 있다는거다
+	{
+		ixPos -= iSpeed;
+		if (ixPos <= iDestx)	
+		{
+			ixPos = iDestx;
+		}
+	}
+	
 }
 
 void NamPos()
 {
-	iyPos -= iSpeed;
-	if (iyPos <= iDesty)
+	if (iyPos < iDesty)	//목적지가 위에 있다는거다
 	{
-		iyPos = iDesty;
+		iyPos -= iSpeed;
 	}
+	else if (iyPos > iDesty)
+	{
+		iyPos -= iSpeed;
+		if (iyPos <= iDesty)
+		{
+			iyPos = iDesty;
+		}
+	}
+	
 }
 
 void BukPos()
 {
-	iyPos += iSpeed;
-	if (iyPos >= iDesty)
+	
+
+	if (iyPos > iDesty)
 	{
-		iyPos = iDesty;
+		iyPos += iSpeed;
 	}
+	else if (iyPos < iDesty)
+	{
+		iyPos += iSpeed;
+		if (iyPos >= iDesty)
+		{
+			iyPos = iDesty;
+		}
+	}
+	
+	
 }
 
 
@@ -116,6 +153,24 @@ int main()
 				std::cout << "3.전진" << std::endl;
 				std::cout << "4.메뉴가기" << std::endl;
 
+		
+
+				if (iDestx == ixPos && iDesty == iyPos)
+				{
+					std::cout << "도착하였습니다 !! Max스피드가 1증가" << std::endl;
+					std::cout << "랜덤으로 새로운 위치가 변경되었습니다" << std::endl;
+					std::cout << "이어서 다시 이동해주세요" << std::endl;
+
+					iMaxSpeed++;
+					//-10 10
+					iDestx = rand() % 21 - 10;	//-10 10 
+					iDesty = rand() % 21 - 10;
+
+			
+
+				}
+
+
 				int iSelect = 0;
 
 				std::cin >> iSelect; 
@@ -150,6 +205,9 @@ int main()
 					while (true)
 					{
 						system("cls");
+
+
+
 						std::cout << "현재방향 : " << Dir << " , " << Dir2 << std::endl;
 						std::cout << "방향을 설정해주세요" << std::endl;
 
@@ -221,12 +279,12 @@ int main()
 						SeoPos();
 					}
 
-					else if (Dir == "Nam" && Dir2 == "")
+					else if (Dir == "" && Dir2 == "Nam")
 					{
 						NamPos();
 					}
 
-					else if (Dir == "Buk" && Dir2 == "")
+					else if (Dir == "" && Dir2 == "Buk")
 					{
 						BukPos();
 					}
@@ -255,19 +313,7 @@ int main()
 					}
 					
 					
-					if (iDestx == ixPos && iDesty == iyPos)
-					{
-						std::cout << "도착하였습니다 !! Max스피드가 1증가" << std::endl;
-						std::cout << "랜덤으로 새로운 위치가 나옵니다 Enter를 쳐주세요" << std::endl;
-
-						iMaxSpeed++;
-						//-10 10
-						iDestx = rand() % 21 - 10;	//-10 10 
-						iDesty = rand() % 21 - 10;
-
-						std::cin.ignore();
-						getchar();
-					}
+				
 
 
 				}
