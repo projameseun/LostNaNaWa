@@ -1,0 +1,15 @@
+﻿  main.cpp
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(71,104): warning C4311: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 포인터가 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(71,104): warning C4302: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(79,10): warning C4244: 'return': 'DWORD'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(87,78): warning C4311: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 포인터가 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(87,78): warning C4302: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(92,77): warning C4311: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 포인터가 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(92,77): warning C4302: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(99,81): warning C4311: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 포인터가 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(99,81): warning C4302: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(108,55): warning C4311: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 포인터가 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(108,55): warning C4302: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(120,81): warning C4311: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 포인터가 잘립니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\main.cpp(120,81): warning C4302: '형식 캐스트': 'LPVOID'에서 'DWORD'(으)로 잘립니다.
+  SoundExample.vcxproj -> D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\x64\Debug\SoundExample.exe

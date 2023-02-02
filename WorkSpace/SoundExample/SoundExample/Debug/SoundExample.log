@@ -1,1 +1,12 @@
-﻿  SoundExample.vcxproj -> C:\Users\JamesEun\Desktop\JamesStudy_C++\LostNaNaWa\WorkSpace\SoundExample\Debug\SoundExample.exe
+﻿  Music.cpp
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\Music.cpp(30,10): warning C4244: 'return': 'DWORD'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  main2.cpp
+  코드를 생성하고 있습니다...
+Music.obj : error LNK2005: "struct tagMCI_OPEN_PARMSW mciOpen" (?mciOpen@@3UtagMCI_OPEN_PARMSW@@A)이(가) main2.obj에 이미 정의되어 있습니다.
+Music.obj : error LNK2005: "struct tagMCI_PLAY_PARMS mciPlay" (?mciPlay@@3UtagMCI_PLAY_PARMS@@A)이(가) main2.obj에 이미 정의되어 있습니다.
+Music.obj : error LNK2005: "struct tagMCI_STATUS_PARMS mciStatus" (?mciStatus@@3UtagMCI_STATUS_PARMS@@A)이(가) main2.obj에 이미 정의되어 있습니다.
+Music.obj : error LNK2005: "unsigned int wDeviceID" (?wDeviceID@@3IA)이(가) main2.obj에 이미 정의되어 있습니다.
+Music.obj : error LNK2005: "unsigned long Result" (?Result@@3KA)이(가) main2.obj에 이미 정의되어 있습니다.
+Music.obj : error LNK2005: "wchar_t const * const MusicRoute" (?MusicRoute@@3PB_WB)이(가) main2.obj에 이미 정의되어 있습니다.
+Music.obj : error LNK2005: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > MusicName" (?MusicName@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A)이(가) main2.obj에 이미 정의되어 있습니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\Debug\SoundExample.exe : fatal error LNK1169: 여러 번 정의된 기호가 있습니다.

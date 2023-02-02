@@ -100,7 +100,7 @@ int main()
 	InitWAV(L".\\Music\\seventeen.mp3");
 	InitWAV(L".\\Music\\jangbumzun.mp3");
 
-	UpdateWav(1);	//번호순에 맞는 음악이 재생됨 첫번째들어간게 1
+	UpdateWav(2);	//번호순에 맞는 음악이 재생됨 첫번째들어간게 1
 	getchar();
 
 
