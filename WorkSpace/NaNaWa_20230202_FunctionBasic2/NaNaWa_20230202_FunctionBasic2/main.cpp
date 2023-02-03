@@ -24,7 +24,7 @@ int main()
 	iResult = Add(10, 20);
 	iResult = Add(10, 20);
 
-	//상대경로 절대경로 함수...재귀함수
+	
 
 	return 0;
 }
