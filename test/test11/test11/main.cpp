@@ -29,7 +29,7 @@ void OddEvenGameMode()
 		std::cout << "È¦Â¦°ÔÀÓ ÀÔ´Ï´Ù È¦,Â¦µÑÁß¿¡ÇÏ³ª¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä " << std::endl;
 
 
-		iSelect = rand() % 1;
+		iSelect = rand() % 2;
 
 		if (iSelect == 0)
 		{
@@ -49,12 +49,27 @@ void OddEvenGameMode()
 		else if (AI != Player)
 		{
 			std::cout << "Æ²·Ç½À´Ï´Ù" << std::endl;
+		
 		}
 
+		while (true)
+		{
+			std::cout << " tset" << std::endl;
+			while (true)
+			{
+				std::cout << "four" << std::endl;
+				goto exit;
+			}
+		
+		}
+
+	exit:
 		std::cin.ignore();
 
 		getchar();
+		
 
+	
 		break;
 
 
@@ -64,6 +79,8 @@ void OddEvenGameMode()
 int main()
 {
 	srand(static_cast<unsigned int>(time(NULL)));
+
+
 
 	int iSelect = 0;
 
@@ -89,7 +106,8 @@ int main()
 
 		if (iSelect == (int)GameType::OddEvenGame)
 		{
-			OddEvenGameMode();
+			OddEvenGameMode(); 
+
 		}
 		else if (iSelect == (int)GameType::DrinkGame)
 		{
