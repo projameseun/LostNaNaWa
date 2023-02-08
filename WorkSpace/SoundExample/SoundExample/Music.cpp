@@ -1,7 +1,11 @@
 
 #include "Music.h"
 
-MCI_OPEN_PARMS      mciOpen; //파일을 로드
+//MCI_OPEN_PARMS      mciOpen; //파일을 로드
+
+
+//MCI_OPEN_PARMS      mciOpen; //파일을 로드
+
 
 MCI_PLAY_PARMS       mciPlay; //파일을 재생
 
@@ -90,3 +94,4 @@ void DestroyMp3()
 	}
 }
 
+MCI_OPEN_PARMS      mciOpen; //파일을 로드

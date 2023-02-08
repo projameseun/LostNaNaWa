@@ -1,2 +1,8 @@
 ﻿  Music.cpp
-D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\Music.cpp : fatal error C1041: 프로그램 데이터베이스 'D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\Debug\vc142.idb'을(를) 열 수 없습니다. 여러 CL.EXE에서 동일한 .PDB 파일에 쓰는 경우 /FS를 사용하십시오.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\Music.cpp(24,2): error C2065: 'mciOpen': 선언되지 않은 식별자입니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\Music.cpp(30,2): error C2065: 'mciOpen': 선언되지 않은 식별자입니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\Music.cpp(37,97): error C2065: 'mciOpen': 선언되지 않은 식별자입니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\Music.cpp(40,14): error C2065: 'mciOpen': 선언되지 않은 식별자입니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\SoundExample\SoundExample\Music.cpp(45,10): warning C4244: 'return': 'DWORD'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  main2.cpp
+  코드를 생성하고 있습니다...
