@@ -24,7 +24,7 @@ int Factorial(int _Count)
 
 /*	재귀(Recursion)함수란 
 	함수 안에서 자기 자신의 함수를 호출하는 방식
-	호출스택 더블클릭 하면 다른 쪽도 볼수 있다 중요함
+	디버그 할때 호출스택 더블클릭 하면 다른 쪽도 볼수 있다 중요함
 	함수 안에서 자기함수를 계속 불러오면(재귀함수) 스택의 한계치를 도달하게 되는데
 	이걸 스택오버 플로우 라고 한다.
 	
@@ -39,6 +39,20 @@ int Factorial_Re(int _Count)
 	}
 
 	return _Count * Factorial_Re(_Count - 1);
+}
+
+//꼬리재귀
+int FatorialTraill(int n,int sum)
+{
+	if (n == 1)
+		return sum;
+	
+	return FatorialTraill(n - 1, sum * n);
+}
+
+int Factoritest(int n)
+{
+	return FatorialTraill(n, 1);
 }
 
 //피보나치수열
@@ -103,7 +117,7 @@ int main()
 
 	std::cout << "iResult = " << iResult << std::endl;
 
-	iResult = Factorial_Re(5);
+	iResult = Factorial_Re(10);
 
 	std::cout << "iResult = " << iResult << std::endl;
 
@@ -111,7 +125,7 @@ int main()
 	iResult = Fibonacci(8);
 	std::cout << "iResult = " << iResult << std::endl;
 
-	iResult = Fibonacci_Re(5);
+	iResult = Fibonacci_Re(3);
 	std::cout << "iResult = " << iResult << std::endl;
 
 	return 0;
