@@ -1,1 +1,5 @@
-﻿  NaNaWa_20230208_Array.vcxproj -> D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20230208_Array\Debug\NaNaWa_20230208_Array.exe
+﻿  main.cpp
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20230208_Array\NaNaWa_20230208_Array\main.cpp(54,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20230208_Array\NaNaWa_20230208_Array\main.cpp(60,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20230208_Array\NaNaWa_20230208_Array\main.cpp(29,6): warning C4101: 'iStudent' :참조되지 않은 지역 변수입니다.
+  NaNaWa_20230208_Array.vcxproj -> D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20230208_Array\Debug\NaNaWa_20230208_Array.exe

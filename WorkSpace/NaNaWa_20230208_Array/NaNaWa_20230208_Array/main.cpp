@@ -1,6 +1,9 @@
 #include <iostream>
 #include <Windows.h>
 #include <time.h>
+#include <algorithm>
+
+using namespace std;
 
 /*
 	배열:같은 자료형의 변수 여러개를 한번에 선언할수 있게 해주는 기능이다.
@@ -13,6 +16,11 @@
 	연속적 메모리를 만들때 똑같은 데이터를 그룹을 묶어서 표현할때 배열 문법을 사용한다.
 
 */
+
+bool compare(int a, int b)
+{
+	return a > b;
+}
 
 int main()
 {
@@ -43,8 +51,6 @@ int main()
 	iSize = sizeof(iNumber2) / sizeof(*iNumber);	//배열의갯수를 구한거다
 
 
-
-
 	for (int i = 0; i < iSize; ++i)
 	{
 	
@@ -70,11 +76,13 @@ int main()
 	char data3[25] = "안녕하세요";	//한글은 2바이트 영어는 1바이트
 
 
-	system("cls");
+	
 
 	std::cout << data << std::endl;
 	std::cout << data2 << std::endl;
 	std::cout << data3 << std::endl;
+
+	system("cls");
 
 	//로또 프로그램 
 	//1~45사이의 숫자중 랜덤한 6개의 숫자를 가져온다 
@@ -103,10 +111,32 @@ int main()
 		iLotto[idx1] = iLotto[idx2];
 		iLotto[idx2] = iTemp;
 	}
+
+	//STL(Standard 라이브러리)
+
+	//오름차순 내림차순을 정렬해주는거다
+	/*std::sort(iLotto, iLotto + 6);*/
+	std::sort(iLotto, iLotto + 45,compare);
+
+	//내림차순 오름차순
+	/*for (int i = 0; i < 5; ++i)
+	{
+		for (int j = i + 1; j < 6; ++j)
+		{
+			if (iLotto[i] > iLotto[j])
+			{
+				iTemp = iLotto[i];
+				iLotto[i] = iLotto[j];
+				iLotto[j] = iTemp;
+			}
+		}
+	}*/
+
+	for (int i = 0; i < 6; ++i)
+	{
+		std::cout << iLotto[i] << std::endl;
+	}
 	
-
-
-
 
 	return 0;
 }
