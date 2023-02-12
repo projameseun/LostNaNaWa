@@ -7,6 +7,12 @@
 int ixpos = 0;
 int iypos = 0;
 
+bool bMainStart = true;
+bool bMenuStart = true;
+bool bGameStart = true;	//모든게임의 시작은 true , 만약에 false되면 메뉴모드로 다넘어감
+
+int iMainStart = 1;	//0이되면 프로그램종료
+int iMenuStart = 1; //0이되면 메인화면으로 넘어감
 
 enum class Getch
 {
@@ -19,7 +25,6 @@ void Resetpos()
 	ixpos = 50;
 	iypos = 2;
 }
-
 
 void gotoxy(int _x, int _y)
 {
@@ -81,6 +86,7 @@ void NotBuy()
 	Sleep(1000);
 }
 
+
 void DrinkBuy()
 {
 	Resetpos();
@@ -123,6 +129,8 @@ void DrinkBuy()
 		Sleep(1000);
 	}//for
 }
+
+
 
 void Drinkgame()
 {
@@ -409,7 +417,7 @@ void Updowngame()
 	srand((unsigned int)time(NULL));
 	iCom = rand() % 101;
 
-	while (true)
+	while (bGameStart == 1)
 	{
 		system("cls");
 		Resetpos();
@@ -455,6 +463,7 @@ void Updowngame()
 				std::cout << " 정답! "<< "숫자는"<<iCom << "이였습니다!";
 				
 				std::cout << iCount << "번 만에 맞추었습니다";
+				bGameStart = false;
 				break;
 			}
 			
@@ -513,6 +522,12 @@ void HnJgame()
 			gotoxy(ixpos, iypos);
 
 			std::cout << "승리!";
+			iypos++;
+			gotoxy(ixpos, iypos);
+			std::cout << "Enter를 누르면 메뉴로 넘어갑니다" << std::endl;
+			std::cin.ignore();
+			getchar();
+			break;
 		}
 		else
 		{	
@@ -520,6 +535,12 @@ void HnJgame()
 			gotoxy(ixpos, iypos);
 
 			std::cout << "패배!";
+			iypos++;
+			gotoxy(ixpos, iypos);
+			std::cout << "Enter를 누르면 메뉴로 넘어갑니다" << std::endl;
+			std::cin.ignore();
+			getchar();
+			break;
 		}
 
 		Sleep(1000);
@@ -535,7 +556,7 @@ void HnJgame()
 //----베스킨라빈스31----//
 
 int iNumber;
-int iBrstart = 1;
+
 
 void Count()
 {
@@ -565,7 +586,8 @@ void BRgamestart()
 		system("cls");
 
 		iCom = rand() % 3 + 1;
-
+		Count();
+		Resetpos();
 
 		iypos++;
 		gotoxy(ixpos, iypos);
@@ -620,8 +642,7 @@ void BRgamestart()
 		gotoxy(ixpos, iypos);
 
 		std::cout << "컴퓨터가 숫자를 냅니다" << std::endl;
-		std::cin.ignore();
-		getchar();
+
 
 
 		for (int i = 0; i < iCom; ++i)
@@ -636,6 +657,9 @@ void BRgamestart()
 
 		}
 
+		std::cin.ignore();
+		getchar();
+
 		if (iNumber >= 31)
 		{
 			bCom = true;
@@ -648,8 +672,7 @@ void BRgamestart()
 			gotoxy(ixpos, iypos);
 
 			std::cout << "컴퓨터 패배" << std::endl;
-			std::cin.ignore();
-			getchar();
+	
 			break;
 		}
 
@@ -660,7 +683,7 @@ void BRgamestart()
 void BRgame()
 {
 		
-	while (iBrstart == 1)
+	while (bGameStart == 1)
 	{	
 
 		
@@ -692,7 +715,7 @@ void BRgame()
 			switch ((Getch)cKey)
 			{
 			case Getch::ESC:
-				iBrstart = 0;
+				bGameStart = 0;
 				break;
 			case Getch::ENTER:
 				BRgamestart();
@@ -719,6 +742,7 @@ enum class Taximenu
 	Direction,
 	Move,
 	Menu,
+	Exit,
 
 };
 
@@ -800,30 +824,243 @@ void NamPos()
 	}
 }
 
+void TaxiGameStart()
+{
+	//Shfit + F12를 누르면 내가만든 변수의 모든곳을 참조 할수있다
+	int iMaxSpeed = 0;
 
+
+	while (true) //게임시작
+	{
+
+		iMaxSpeed = 3;
+		iSpeed = 0;
+
+
+		std::string Dir = "";
+		std::string Dir2 = "";
+
+		iDestx = 5;
+		iDesty = 7;
+
+		system("cls");
+
+		int iSelect = 0;
+
+
+		std::cout << "내 현재 위치 :" << iXPos << " , " << iYPos << " 목적지 : " << iDestx << "," << iDesty << std::endl;
+
+		std::cout << "현재 속도 :" << iSpeed << "." << "최고 속도" << iMaxSpeed << std::endl;
+
+		std::cout << "현재방향" << Dir << "," << Dir2 << std::endl;
+
+		std::cout << "------------------------------" << std::endl;
+
+
+		std::cout << "1. 속도" << std::endl;
+
+		std::cout << "2. 방향" << std::endl;
+
+		std::cout << "3. 전진" << std::endl;
+		;
+		std::cout << "4. 메뉴가기" << std::endl;
+
+		std::cin >> iSelect;
+
+
+
+		if (iSelect == (int)Taximenu::Menu) // 4. 메뉴가기
+		{
+
+			break;
+		}
+
+		if (iSelect == (int)Taximenu::Speed) // 1. 속도
+		{
+			std::cout << "속도를 올릴 수 있습니다." << std::endl;
+			std::cout << "현재속도 :" << iSpeed << "," << "최대속도 : " << iMaxSpeed << std::endl;
+
+			std::cin >> iSpeed;
+
+			if (iSpeed > iMaxSpeed)
+			{
+				iSpeed = 0;
+				std::cout << "최대속도를 넘을 수 없습니다" << std::endl;
+			}
+
+			else if (iSpeed <= iMaxSpeed && iSpeed >= 0)
+			{
+
+				iSpeed = iSpeed;
+			}
+
+		}
+
+
+		else if (iSelect == (int)Taximenu::Direction) //2. 방향
+		{
+			while (true)
+			{
+				system("cls");
+				std::cout << "현재방향 : " << Dir << ", " << Dir2 << std::endl;
+				std::cout << "방향을 설정해주세요" << std::endl;
+				std::cout << "동=Dong, 서=Seo" << std::endl;
+				std::cout << "비우고 싶으면 None" << std::endl;
+
+				std::cin >> Dir;
+
+				std::cout << "남=Nam, 북=Buk" << std::endl;
+				std::cout << "비우고 싶으면 None" << std::endl;
+
+				std::cin >> Dir2;
+
+				if (Dir != "Dong" && Dir != "Seo" && Dir != "None")
+				{
+					std::cout << "제대로 입력해주세요" << std::endl;
+					Dir = "";
+					std::cin.ignore();
+					getchar();
+
+					continue;
+				}
+
+				if (Dir2 != "Buk" && Dir2 != "Nam" && Dir2 != "None")
+				{
+					std::cout << "제대로 입력해주세요" << std::endl;
+					Dir2 = "";
+					std::cin.ignore();
+					getchar();
+
+					continue;
+				}
+
+				if (Dir == "None")
+				{
+					Dir = "";
+				}
+				if (Dir2 == "None")
+				{
+					Dir2 = "";
+				}
+
+				break;
+
+			}
+		}
+
+		else if (iSelect == (int)Taximenu::Move)
+		{
+			if (iSpeed == 0)
+			{
+				continue;
+			}
+
+			if (Dir == "" && Dir2 == "")
+			{
+				continue;
+			}
+
+			if (Dir == "Dong" && Dir2 == "")
+			{
+				DongPos();
+			}
+
+			else if (Dir == "Seo" && Dir2 == "")
+			{
+				SeoPos();
+			}
+
+			else if (Dir == "" && Dir2 == "Buk")
+			{
+				BukPos();
+			}
+
+
+			else if (Dir == "" && Dir2 == "Nam")
+			{
+				NamPos();
+			}
+
+			//------
+
+
+			else if (Dir == "Dong" && Dir2 == "Nam")
+			{
+				DongPos();
+				NamPos();
+			}
+
+			else if (Dir == "Seo" && Dir2 == "Nam")
+			{
+				SeoPos();
+				NamPos();
+			}
+
+			else if (Dir == "Dong" && Dir2 == "Buk")
+			{
+				DongPos();
+				BukPos();
+			}
+
+			else if (Dir == "Seo" && Dir2 == "Buk")
+			{
+				SeoPos();
+				BukPos();
+			}
+
+		}
+
+
+
+		else
+		{
+			std::cout << "번호를 제대로 입력해주세요" << std::endl;
+			continue;
+
+		}
+
+
+
+
+
+
+		if (iDestx == iXPos && iDesty == iYPos)
+
+		{
+
+			std::cout << "목적지에 도착하였습니다. MAX스피드가 1 증가합니다" << std::endl;
+
+			std::cout << "랜덤으로 목적지가 변경됩니다." << std::endl;
+
+			std::cout << "이어서 다시 이동해주세요" << std::endl;
+
+			iMaxSpeed++;
+
+			iDestx = rand() % 21 - 10; // -10 ~ 10 까지 랜덤 난수 생성
+			iDesty = rand() % 21 - 10;
+
+			Sleep(1000);
+
+		}
+
+
+
+
+	}
+
+}
 
 void Taxigame()
 {
 	srand(static_cast<unsigned int>(time(NULL)));
 
 
-	
-	int iMaxSpeed = 0;
+
 
 	
 	while (true)
 	{
-			
-		iMaxSpeed = 3;
-		iSpeed = 0;
-
 		int istart = 0;
-		
-		std::string Dir = "";
-		std::string Dir2 = "";
-
-		iDestx = 5;
-		iDesty = 7;
 
 
 		system("cls");
@@ -837,219 +1074,26 @@ void Taxigame()
 
 		std::cout << "3. 목적지로 전진합니다. 목적지에 도달하면 MAX 스피드가 1 증가합니다. 목적지는 랜덤으로 옮겨집니다!" << std::endl;
 
-		std::cout << "4. Enter를 누르면 게임이 시작됩니다" << std::endl;
+		std::cout << "4. 1을 누르면 게임이 시작됩니다" << std::endl;
 
-		std::cin.ignore();
-		getchar();
-		
+		std::cout << "5. 나가기 -99" << std::endl;
 
+		std::cin >> istart;
 		
-		while (true) //게임시작
+		if (istart == 99)
 		{
-			system("cls");
-
-			int iSelect = 0;
-
-		
-			std::cout << "내 현재 위치 :" << iXPos <<" , " << iYPos << " 목적지 : " << iDestx << "," << iDesty << std::endl;
-						
-			std::cout << "현재 속도 :" << iSpeed << "." << "최고 속도" << iMaxSpeed << std::endl;
-				
-			std::cout << "현재방향" << Dir << "," << Dir2 << std::endl;
-
-			std::cout << "------------------------------" << std::endl;
-
-
-			std::cout << "1. 속도" << std::endl;
-		
-			std::cout << "2. 방향" << std::endl;
-		
-			std::cout << "3. 전진" << std::endl;
-	;
-			std::cout << "4. 메뉴가기" << std::endl;
-
-			std::cin >> iSelect;
-
-
-
-			if (iSelect == (int)Taximenu::Menu) // 4. 메뉴가기
-			{
-				break;
-			}
-		
-			if (iSelect == (int)Taximenu::Speed) // 1. 속도
-			{
-				std::cout << "속도를 올릴 수 있습니다." << std::endl;
-				std::cout << "현재속도 :" << iSpeed << "," << "최대속도 : " << iMaxSpeed << std::endl;
-
-				std::cin >> iSpeed;
-
-				if (iSpeed > iMaxSpeed)
-				{
-					iSpeed = 0;
-					std::cout << "최대속도를 넘을 수 없습니다" << std::endl;
-				}
-
-				else if (iSpeed <= iMaxSpeed && iSpeed >= 0)
-				{
-
-					iSpeed = iSpeed;
-				}
-
-			}
-
-
-			else if (iSelect == (int)Taximenu::Direction) //2. 방향
-			{
-				while (true)
-				{
-					system("cls");
-					std::cout << "현재방향 : " << Dir << ", " << Dir2 << std::endl;
-					std::cout << "방향을 설정해주세요" << std::endl;
-					std::cout << "동=Dong, 서=Seo" << std::endl;
-					std::cout << "비우고 싶으면 None" << std::endl;
-
-					std::cin >> Dir;
-
-					std::cout << "남=Nam, 북=Buk" << std::endl;
-					std::cout << "비우고 싶으면 None" << std::endl;
-
-					std::cin >> Dir2;
-
-					if (Dir != "Dong" && Dir !="Seo" && Dir != "None")
-					{
-						std::cout << "제대로 입력해주세요" << std::endl;
-						Dir = "";
-						std::cin.ignore();
-						getchar();
-
-						continue;
-					}
-
-					if (Dir2 != "Buk" && Dir2 != "Nam" && Dir2 != "None")
-					{
-						std::cout << "제대로 입력해주세요" << std::endl;
-						Dir2 = "";
-						std::cin.ignore();
-						getchar();
-
-						continue;
-					}
-
-					if (Dir == "None")
-					{
-						Dir = "";
-					}
-					if (Dir2 == "None")	
-					{
-						Dir2 = "";
-					}
-
-					break;
-
-				}
-			}
-
-			else if (iSelect == (int)Taximenu::Move)
-			{
-				if (iSpeed == 0)
-				{
-					continue;
-				}
-
-				if (Dir == "" && Dir2 == "")
-				{
-					continue;
-				}
-
-				if (Dir == "Dong" && Dir2 == "")
-				{
-					DongPos();
-				}
-
-				else if (Dir == "Seo" && Dir2 == "")
-				{
-					SeoPos();
-				}
-
-				else if (Dir == "" && Dir2 == "Buk")
-				{
-					BukPos();
-				}
-
-
-				else if (Dir == "" && Dir2 == "Nam")
-				{
-					NamPos();
-				}
-
-				//------
-
-
-				else if (Dir == "Dong" && Dir2 == "Nam")
-				{
-					DongPos();
-					NamPos();
-				}
-
-				else if (Dir == "Seo" && Dir2 == "Nam")
-				{
-					SeoPos();
-					NamPos();
-				}
-
-				else if (Dir == "Dong" && Dir2 == "Buk")
-				{
-					DongPos();
-					BukPos();
-				}
-
-				else if (Dir == "Seo" && Dir2 == "Buk")
-				{
-					SeoPos();
-					BukPos();
-				}
-
-			}
-			
-			else
-			{
-			std::cout << "번호를 제대로 입력해주세요" << std::endl;
-			continue;
-
-			}
-
-
-
-
-
-
-			if (iDestx == iXPos && iDesty == iYPos)
-
-			{	
-	
-				std::cout << "목적지에 도착하였습니다. MAX스피드가 1 증가합니다" << std::endl;
-
-				std::cout << "랜덤으로 목적지가 변경됩니다." << std::endl;
-
-				std::cout << "이어서 다시 이동해주세요" << std::endl;
-
-				iMaxSpeed++;
-
-				iDestx = rand() % 21 - 10; // -10 ~ 10 까지 랜덤 난수 생성
-				iDesty = rand() % 21 - 10;
-
-				Sleep(1000);
-
-			}
-
-			
-
-
+			break;
 		}
 
-
-
+		if (istart == 1)
+		{
+			TaxiGameStart();
+		}
+		
+		else
+		{
+			continue;
+		}
 		
 
 	}
@@ -1068,82 +1112,98 @@ void Taxigame()
 
 void gamestart()
 {
-	system("cls");
-	int iSelect = 0;
-
-	Resetpos();
-	gotoxy(ixpos, iypos);
-
-	iypos++;
-	std::cout << "1. 드링크게임";
-
-	gotoxy(ixpos, iypos);
-	iypos++;
-	std::cout << "2. 업다운게임";
-
-	gotoxy(ixpos, iypos);
-	iypos++;
-	std::cout << "3. 홀짝게임";
-
-	gotoxy(ixpos, iypos);
-	iypos++;
-	std::cout << "4. 베스킨라빈스31";
-
-	gotoxy(ixpos, iypos);
-	iypos++;
-	std::cout << "5. 택시게임";
-
-	gotoxy(ixpos, iypos);
-	iypos++;
-	std::cout << "6. 게임종료";
-
-	gotoxy(ixpos, iypos);
-	iypos++;
-	std::cin >> iSelect;
-
-	if (true)
+	while (bMenuStart == true)
 	{
-		iSelect;
+		system("cls");
+		int iSelect = 0;
 
-		switch (iSelect)
+		bGameStart = true;
+
+		Resetpos();
+		gotoxy(ixpos, iypos);
+
+		iypos++;
+		std::cout << "1. 드링크게임";
+
+		gotoxy(ixpos, iypos);
+		iypos++;
+		std::cout << "2. 업다운게임";
+
+		gotoxy(ixpos, iypos);
+		iypos++;
+		std::cout << "3. 홀짝게임";
+
+		gotoxy(ixpos, iypos);
+		iypos++;
+		std::cout << "4. 베스킨라빈스31";
+
+		gotoxy(ixpos, iypos);
+		iypos++;
+		std::cout << "5. 택시게임";
+
+		gotoxy(ixpos, iypos);
+		iypos++;
+		std::cout << "6. 게임종료";
+
+		gotoxy(ixpos, iypos);
+		iypos++;
+		std::cin >> iSelect;
+
+
+
+		if (true)
 		{
+			iSelect;
 
-		case(int)gamenumber::Drinkgame:
-		{
-			Drinkgame();
-			break;
-		}
+			switch (iSelect)
+			{
 
-		case(int)gamenumber::Updowngame:
-		{
-			Updowngame();
-			break;
-		}
+			case(int)gamenumber::Drinkgame:
+			{
+				Drinkgame();
+				break;
+			}
 
-		case(int)gamenumber::HnJgame:
-		{
-			HnJgame();
-			break;
-		}
+			case(int)gamenumber::Updowngame:
+			{
+				Updowngame();
+				break;
+			}
 
-		case(int)gamenumber::BRgame:
-		{
-			BRgame();
-			break;
-		}
+			case(int)gamenumber::HnJgame:
+			{
+				HnJgame();
+				break;
+			}
 
-		case(int)gamenumber::Taxigame:
-		{
-			Taxigame();
-			break;
-		}
+			case(int)gamenumber::BRgame:
+			{
+				BRgame();
+				break;
+			}
+
+			case(int)gamenumber::Taxigame:
+			{
+				Taxigame();
+				break;
+			}
+			case(int)gamenumber::GameEnd:
+			{
+				gotoxy(ixpos, iypos);
+				iypos++;
+				std::cout << "MainGame으로 다시진입" << std::endl;
+				bMenuStart = false;
+				break;
+			}
 
 
 
-		default:
-			break;
-		}//switch
-	}//if
+			default:
+				break;
+			}//switch
+
+		}//if
+	}
 }//gamestart
 
 
@@ -1152,7 +1212,7 @@ void gamestart()
 
 int main()
 {
-	while (true)
+	while (bMainStart == true)
 
 	{
 
@@ -1193,22 +1253,27 @@ int main()
 			case(int)Getch::ENTER:
 			{
 				gamestart();
+				bMenuStart = true;
 				break;
 			}
 			case(int)Getch::ESC:
 			{
 				std::cout << "ENTER을 누르면 게임을 종료합니다";
+
+				std::cin.ignore();
 				getchar();
+				bMainStart = false;
+				
 				break;
 
 			}
 			default:
 				break;
 			}//switch
-			
+		
 		}//if(_kbhit)
 
-		Sleep(1000);
+		Sleep(500);
 	}
 
 

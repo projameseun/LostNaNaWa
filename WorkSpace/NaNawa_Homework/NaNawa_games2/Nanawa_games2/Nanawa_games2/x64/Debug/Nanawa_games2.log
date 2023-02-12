@@ -1,0 +1,4 @@
+﻿  소스.cpp
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNawa_Homework\NaNawa_games2\Nanawa_games2\Nanawa_games2\소스.cpp(33,16): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNawa_Homework\NaNawa_games2\Nanawa_games2\Nanawa_games2\소스.cpp(33,19): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  Nanawa_games2.vcxproj -> D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNawa_Homework\NaNawa_games2\Nanawa_games2\x64\Debug\Nanawa_games2.exe
