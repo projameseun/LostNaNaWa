@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< Updated upstream:WorkSpace/NaNaWa_20230202_PrintfScanf/NaNaWa_20230202_PrintfScanf/Debug/NaNaWa_20230202_PrintfScanf.exe.recipe
       <FullPath>D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20230202_PrintfScanf\Debug\NaNaWa_20230202_PrintfScanf.exe</FullPath>
+=======
+      <FullPath>C:\Users\dayeo\OneDrive\바탕 화면\c++\냐냐와\LostNaNaWa\workspace\NaNaWa_202300118_GameCollect\x64\Debug\NaNaWa_202300118_GameCollect.exe</FullPath>
+>>>>>>> Stashed changes:WorkSpace/NaNaWa_202300118_GameCollect/NaNaWa_202300118_GameCollect/x64/Debug/NaNaWa_202300118_GameCollect.exe.recipe
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
