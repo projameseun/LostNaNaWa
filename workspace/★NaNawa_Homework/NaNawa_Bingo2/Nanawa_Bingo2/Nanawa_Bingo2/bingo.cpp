@@ -7,17 +7,16 @@ int aiBingo = 0;
 
 int iSelectMode = 0;
 
-int iPlayer[25];
-int iAi[25];
+int Player[25];
+int AI[25];
 
+bool bAcc = true;
 
-
-enum class GameMode
+enum class AIMode
 {
 	EASY = 1,
 	HARD,
 };
-
 
 void GameModeSelect()
 {
@@ -30,12 +29,12 @@ void GameModeSelect()
 
 		std::cin >> iSelectMode;
 
-		if (iSelectMode == (int)GameMode::EASY)
+		if (iSelectMode == (int)AIMode::EASY)
 		{
 			iSelectMode = 1;
 			break;
 		}
-		else if (iSelectMode == (int)GameMode::HARD)
+		else if (iSelectMode == (int)AIMode::HARD)
 		{
 			iSelectMode = 2;
 			break;
@@ -62,16 +61,16 @@ void Shuffle()
 		idx1 = rand() % 25;
 		idx2 = rand() % 25;
 
-		itemp = iPlayer[idx1];
-		iPlayer[idx1] = iPlayer[idx2];
-		iPlayer[idx2] = itemp;
+		itemp = Player[idx1];
+		Player[idx1] = Player[idx2];
+		Player[idx2] = itemp;
 
 		idx1 = rand() % 25;
 		idx2 = rand() % 25;
 
-		itemp = iAi[idx1];
-		iAi[idx1] = iAi[idx2];
-		iAi[idx2] = itemp;
+		itemp = AI[idx1];
+		AI[idx1] = AI[idx2];
+		AI[idx2] = itemp;
 
 	}
 
@@ -82,10 +81,150 @@ void Initial()
 {
 	for (int i = 0; i < 25; ++i)
 	{
-		iPlayer[i] = i + 1;
-		iAi[i] = i + 1;
+		Player[i] = i + 1;
+		AI[i] = i + 1;
 	}
 
+}
+
+void BingoCheck()
+{
+	int iHbcount = 0;
+	int iWbcount = 0;
+	int iRbcount = 0;
+	int iLbcount = 0;
+
+	int aiiHbcount = 0;
+	int aiiWbcount = 0;
+	int aiiRbcount = 0;
+	int aiiLbcount = 0;
+
+	iBingo = 0;
+	aiBingo = 0;
+
+	for (int i = 0; i < 5; ++i)
+	{
+		for (int j = 0; j < 5; ++j)
+		{
+			if (Player[i + j * 5] == INT_MAX) // 세로빙고 0 5 10 15 20
+			{
+				iHbcount++;
+
+				if (iHbcount == 5)
+				{
+					iBingo++;
+				}
+			}
+
+			if (AI[i + j * 5] == INT_MAX) // 세로빙고 0 5 10 15 20
+			{
+				aiiHbcount++;
+
+				if (aiiHbcount == 5)
+				{
+					aiBingo++;
+				}
+			}
+
+			//다음시간에 만나요~ 
+
+			//if (iPlayer[i + j * 5] % 4 && i+j*5 != 0 && i+j*5 !=24 == INT_MAX) // / 우측대각 4 8 12 16 20
+			//{
+			//	iRbcount++;
+
+			//	if (iRbcount == 5)
+			//	{
+			//		iBingo++;
+			//	}
+
+			//}
+
+			//if (iPlayer[i + j * 5] / 6 == INT_MAX) // 좌측대각 0 6 12 18 24
+			//{
+			//	iLbcount++;
+
+			//	if (iLbcount == 5)
+			//	{
+			//		iBingo++;
+			//	}
+
+			//}
+
+
+			if (Player[i * 5 + j] == INT_MAX) // 가로 빙고 0 1 2 3 4 
+			{
+				iWbcount++;
+
+				if (iWbcount == 5)
+				{
+					iBingo++;
+				}
+			}
+
+			if (AI[i * 5 + j] == INT_MAX) // 가로 빙고 0 1 2 3 4 
+			{
+				aiiWbcount++;
+
+				if (aiiWbcount == 5)
+				{
+					aiBingo++;
+				}
+			}
+
+
+		}
+
+		iWbcount = 0;
+		iHbcount = 0;
+		aiiWbcount = 0;
+		aiiHbcount = 0;
+
+	} //빙고 IF문
+
+	iLbcount = 0;
+	iRbcount = 0;
+	aiiLbcount = 0;
+	aiiRbcount = 0;
+
+	for (int i = 0; i < 25; i += 6) // 좌 -> 우 아래
+	{
+		if (Player[i] == INT_MAX)
+		{
+			iLbcount++;
+			if (iLbcount == 5)
+			{
+				iBingo++;
+			}
+		}
+		if (AI[i] == INT_MAX)
+		{
+			aiiLbcount++;
+			if (aiiLbcount == 5)
+			{
+				aiBingo++;
+			}
+		}
+	}
+
+	for (int i = 4; i < 21; i += 4)
+	{
+		if (Player[i] == INT_MAX)
+		{
+			iRbcount++;
+			if (iRbcount == 5)
+			{
+				iBingo++;
+			}
+		}
+		if (AI[i] == INT_MAX)
+		{
+			aiiRbcount++;
+			if (aiiRbcount == 5)
+			{
+				aiBingo++;
+			}
+		}
+	}
 }
 
 
@@ -95,6 +234,20 @@ void GameRender()
 	{
 		system("cls");
 
+
+
+
+		std::cout << "iBingo  = " << iBingo << std::endl;
+		std::cout << "aiBingo  = " << aiBingo << std::endl;
+
+
+		if (iBingo >= 5 && aiBingo >= 5)
+		{
+			std::wcout << "게임을 종료합니다" << std::endl;
+		}
+
+
+
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN);
 		std::cout << "<========Player=======>" << std::endl;
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN);
@@ -103,7 +256,7 @@ void GameRender()
 		{
 			for (int j = 0; j < 5; ++j)
 			{
-				if (iPlayer[i * 5 + j] == INT_MAX)
+				if (Player[i * 5 + j] == INT_MAX)
 				{
 					
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN);
@@ -113,7 +266,7 @@ void GameRender()
 
 				else
 				{
-					std::cout << iPlayer[i * 5 + j] << "\t";
+					std::cout << Player[i * 5 + j] << "\t";
 				}
 
 
@@ -135,7 +288,7 @@ void GameRender()
 		{
 			for (int j = 0; j < 5; ++j)
 			{
-				if (iAi [i * 5 + j] == INT_MAX)
+				if (AI [i * 5 + j] == INT_MAX)
 				{	
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN);
 					std::cout << "♥" << "\t";
@@ -144,7 +297,7 @@ void GameRender()
 
 				else
 				{
-					std::cout << iAi[i * 5 + j] << "\t";
+					std::cout << AI[i * 5 + j] << "\t";
 				}
 
 
@@ -165,122 +318,71 @@ void GameRender()
 			std::cout << "1~25까지 입력해주세요" << std::endl;
 		}
 
+		bAcc = true;
+
 		for (int i = 0; i < 25; ++i)
 		{
-			if (iNumber == iPlayer[i])
+			if (iNumber == Player[i])
 			{
-				iPlayer[i] = INT_MAX;
+				Player[i] = INT_MAX;
+				bAcc = false;
 			}
-			if (iNumber == iAi[i])
+			if (iNumber == AI[i])
 			{
-				iAi[i] = INT_MAX;
+				AI[i] = INT_MAX;
 			}
 				
 		} 
+
+		//ai 차례가 되면된다.
+
+		switch ((AIMode)iSelectMode)
+		{
+		case AIMode::EASY:
+			while (true)
+			{
+				int i = rand() % 25;
+				if (AI[i] == INT_MAX)
+				{
+					continue;
+				}
+				if (AI[i] != INT_MAX)
+				{
+					iNumber = AI[i];
+					break;
+				}
+			}
+
+			for (int i = 0; i < 25; ++i)
+			{
+				if (iNumber == Player[i])
+				{
+					Player[i] = INT_MAX;
+					bAcc = false;
+				}
+				if (iNumber == AI[i])
+				{
+					AI[i] = INT_MAX;
+				}
+			}
+
+			break;
+		case AIMode::HARD:
+
+			break;
+		default:
+			break;
+		}
+
 		
-		int iHbcount = 0;
-		int iWbcount = 0;
-		int iRbcount = 0;
-		int iLbcount = 0;
-
-		iBingo = 0;
-		aiBingo = 0;
-
-		for (int i = 0; i < 5; ++i)
+		if (bAcc)
 		{
-			for (int j = 0; j < 5; ++j)
-			{
-				if (iPlayer[i + j * 5] == INT_MAX) // 세로빙고 0 5 10 15 20
-				{
-					iHbcount++;
-
-					if (iHbcount == 5)
-					{
-						iBingo++;
-					}
-				}
-
-				//다음시간에 만나요~ 
-
-				//if (iPlayer[i + j * 5] % 4 && i+j*5 != 0 && i+j*5 !=24 == INT_MAX) // / 우측대각 4 8 12 16 20
-				//{
-				//	iRbcount++;
-
-				//	if (iRbcount == 5)
-				//	{
-				//		iBingo++;
-				//	}
-
-				//}
-
-				//if (iPlayer[i + j * 5] / 6 == INT_MAX) // 좌측대각 0 6 12 18 24
-				//{
-				//	iLbcount++;
-
-				//	if (iLbcount == 5)
-				//	{
-				//		iBingo++;
-				//	}
-
-				//}
-
-
-				if (iPlayer[i * 5 + j] == INT_MAX) // 가로 빙고 0 1 2 3 4 
-				{
-					iWbcount++;
-
-					if (iWbcount == 5)
-					{
-						iBingo++;
-					}
-				}
-
-
-			}
-
-			iWbcount = 0;
-			iHbcount = 0;
-						
-
-		} //빙고 IF문
-
-
-		for (int i = 0; i < 25; i+=6) // 좌 -> 우 아래
-		{
-			if (iPlayer[i] == INT_MAX)
-			{
-				iLbcount++;
-				if (iLbcount == 5)
-				{
-					iBingo++;
-				}
-			}
+			continue;
 		}
 
-		for (int i = 4; i < 21; i+=4)
-		{
-			if (iPlayer[i] == INT_MAX)
-			{
-				iRbcount++;
-				if (iRbcount == 5)
-				{
-					iBingo++;
-				}
-			}
-		}
-
-		std::cout << "iBingo  = " << iBingo << std::endl;
-		std::cout << "aiBingo  = " << aiBingo << std::endl;
 
 
-		if (iBingo >= 5 && aiBingo >= 5)
-		{
-			std::wcout << "게임을 종료합니다" << std::endl;
-		}
-		
-
-
-
+		BingoCheck();
 
 		Sleep(1000);
 
