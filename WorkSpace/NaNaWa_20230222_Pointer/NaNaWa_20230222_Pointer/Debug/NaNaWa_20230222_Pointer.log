@@ -1,0 +1,3 @@
+﻿  main.cpp
+D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20230222_Pointer\NaNaWa_20230222_Pointer\main.cpp(51,11): warning C4309: '초기화 중': 상수 값이 잘립니다.
+  NaNaWa_20230222_Pointer.vcxproj -> D:\NaNaWa_Study\LostNaNaWa\WorkSpace\NaNaWa_20230222_Pointer\Debug\NaNaWa_20230222_Pointer.exe
