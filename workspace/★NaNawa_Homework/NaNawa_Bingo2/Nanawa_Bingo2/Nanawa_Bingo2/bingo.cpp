@@ -12,6 +12,24 @@ int AI[25];
 
 bool bAcc = true;
 
+enum class LN_NUMBER
+{
+	LN_W1,
+	LN_W2,
+	LN_W3,
+	LN_W4,
+	LN_W5,
+
+	LN_H1,
+	LN_H2,
+	LN_H3,
+	LN_H4,
+	LN_H5,
+
+	LN_LD,
+	LN_RD,
+};
+
 enum class AIMode
 {
 	EASY = 1,
@@ -368,7 +386,151 @@ void GameRender()
 
 			break;
 		case AIMode::HARD:
+		{
+			int iCheckCount = 0;
+			int iSaveCount = 0;
+			int iLine = 0;
 
+			//가로줄체크
+			for (int i = 0; i < 5; ++i)
+			{
+				iCheckCount = 0;
+
+				for (int j = 0; j < 5; ++j)
+				{
+					if (AI[i * 5 + j] == INT_MAX)
+					{
+						++iCheckCount;
+					}
+				}
+
+				if (iCheckCount < 5 && iSaveCount < iCheckCount)
+				{
+					iLine = i;
+					iSaveCount = iCheckCount;
+				}
+
+			}
+
+
+			//세로줄체크
+			for (int i = 0; i < 5; ++i)
+			{
+				iCheckCount = 0;
+				for (int j = 0; j < 5; ++j)
+				{
+					if (AI[j * 5 + i] == INT_MAX)
+					{
+						++iCheckCount;
+					}
+				}
+
+				if (iCheckCount < 5 && iSaveCount < iCheckCount)
+				{
+					iLine = i + 5;
+					iSaveCount = iCheckCount;
+				}
+			}
+
+
+			iCheckCount = 0;
+			//왼대 
+			for (int i = 0; i < 25; i += 6)
+			{
+				if (AI[i] == INT_MAX)
+				{
+					++iCheckCount;
+				}
+
+			}
+
+			if (iCheckCount < 5 && iSaveCount < iCheckCount)
+			{
+				iLine = (int)LN_NUMBER::LN_LD;
+				iSaveCount = iCheckCount;
+			}
+
+
+			iCheckCount = 0;
+			//오대 
+			for (int i = 4; i <= 20; i += 4)
+			{
+				if (AI[i] == INT_MAX)
+				{
+					++iCheckCount;
+				}
+
+			}
+
+			if (iCheckCount < 5 && iSaveCount < iCheckCount)
+			{
+				iLine = (int)LN_NUMBER::LN_RD;
+				iSaveCount = iCheckCount;
+			}
+
+			//여기 까지 온건 문자체크가 가장 많이 된 라인을 알게 된것이다.
+			//가로줄
+			if (iLine <= (int)LN_NUMBER::LN_W5)
+			{
+
+				for (int i = 0; i < 5; ++i)
+				{
+					if (AI[iLine * 5 + i] != INT_MAX)
+					{
+
+						iNumber = AI[iLine * 5 + i];
+					}
+				}
+			}
+			//세로줄
+			else if (iLine <= (int)LN_NUMBER::LN_H5)
+			{
+				for (int i = 0; i < 5; ++i)
+				{
+					if (AI[i * 5 + (iLine - 5)] != INT_MAX)
+					{
+						iNumber = AI[i * 5 + (iLine - 5)];
+					}
+				}
+			}
+			//왼대
+			else if (iLine == (int)LN_NUMBER::LN_LD)
+			{
+				for (int i = 0; i < 25; i += 6)
+				{
+					if (AI[i] != INT_MAX)
+					{
+						iNumber = AI[i];
+					}
+				}
+			}
+			//오대
+			else if (iLine == (int)LN_NUMBER::LN_RD)
+			{
+				for (int i = 4; i <= 20; i += 4)
+				{
+					if (AI[i] != INT_MAX)
+					{
+						iNumber = AI[i];
+					}
+				}
+			}
+
+
+			for (int i = 0; i < 25; ++i)
+			{
+				if (AI[i] == iNumber)
+				{
+					AI[i] = INT_MAX;
+				}
+				if (Player[i] == iNumber)
+				{
+					Player[i] = INT_MAX;
+				}
+			}
+
+
+		}
 			break;
 		default:
 			break;
