@@ -31,15 +31,16 @@ int main()
 	std::cout << "iData = " << iData << std::endl;
 
 	
-
+	short sTest = 0;
+	
 	//4.
 	char cArr[10] = { 1,1,1,1,1,1,1,1,1,1 };
 
 	short* sptr = (short*)cArr;
 
-	iData = *sptr;
+	sTest = *sptr;
 
-	std::cout << "iData = " << iData << std::endl;
+	std::cout << "iData = " << sTest << std::endl;
 
 
 
