@@ -6,8 +6,8 @@ int main()
 	int iNum = 257;
 	char* ptr = (char*)&iNum;
 
-
 	std::cout << "ptr : " << *ptr << std::endl;
+
 	//왜 1이나오는지 ?
 
 	//2.
@@ -30,6 +30,7 @@ int main()
 
 	std::cout << "iData = " << iData << std::endl;
 
+	
 
 	//4.
 	char cArr[10] = { 1,1,1,1,1,1,1,1,1,1 };

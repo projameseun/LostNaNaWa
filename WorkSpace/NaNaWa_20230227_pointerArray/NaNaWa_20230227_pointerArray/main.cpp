@@ -1,9 +1,17 @@
 #include <iostream>
 #include <Windows.h>
 
+
+//Cal by reference 참조를 호출
 void Func(int* a)
 {
 	*a = 2000;
+}
+
+//Call by value 값을 호출
+void Func2(int a)
+{
+	a = 2000;
 }
 
 
@@ -68,6 +76,12 @@ int main()
 	Func(&a);
 
 	std::cout << a << std::endl;
+
+	int b = 300;
+
+	Func2(b);
+
+	std::cout << b << std::endl;
 
 	//CallbyValue
 	//CallbyReference 
