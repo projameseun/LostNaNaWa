@@ -38,9 +38,9 @@ int main()
 
 	short* sptr = (short*)cArr;
 
-	sTest = *sptr;
+	iData = *sptr;
 
-	std::cout << "iData = " << sTest << std::endl;
+	std::cout << "iData = " << iData << std::endl;
 
 
 
