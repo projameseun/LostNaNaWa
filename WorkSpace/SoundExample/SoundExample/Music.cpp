@@ -21,7 +21,7 @@ LPCTSTR MusicRoute;
 WORD InitMP3(LPCTSTR lpszWave)	//"안녕하세요"
 {
 
-	mciOpen.lpstrDeviceType = L"MPEGVideo";	//Mp3를 재생하기위해서 먼저 연다
+	mciOpen.lpstrDeviceType = L"WaveAudio";	//Mp3를 재생하기위해서 먼저 연다
 
 	//WaveAudio 대신 MPEGVideo를 사용하면 mp3 형식을 재생합니다.
 	//WaveAudio 이거는 wav 파일
@@ -42,6 +42,7 @@ WORD InitMP3(LPCTSTR lpszWave)	//"안녕하세요"
 	//mciPlay.dwCallback = Result;
 
 	if (Result)
+		std::cerr << "Error : " << Result << std::endl;
 		return Result;
 
 

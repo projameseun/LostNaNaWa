@@ -60,6 +60,7 @@ enum class MusicNumber
 
 WORD InitWAV(LPCTSTR lpszWave)
 {
+	ZeroMemory(&mciOpen, sizeof(mciOpen));
 
 	mciOpen.lpstrDeviceType = L"MPEGVideo";
 
